@@ -6,7 +6,6 @@ const fileName = "sample.txt";
 fs.writeFileSync(fileName, "Hello, this is the original content.");
 console.log("File created successfully.");
 
-
 let data = fs.readFileSync(fileName, "utf8");
 console.log("File content:", data);
 
