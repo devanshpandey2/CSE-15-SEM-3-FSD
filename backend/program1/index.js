@@ -1,16 +1,22 @@
-// using node.js build-int events module create an event-emitter register multiple event-emitteer .register multiple listeners for a resonable event , then emit the event bypassing name and id as arguments and display them int the  console
+// using node.js built-in events module
+// create an event emitter, register multiple listeners
+// for the same event, then emit the event with name and id
 
-import http from "http";
-import EventEmitter from "event";
+const { EventEmitter } = require("node:events");
+
 const myEmitter = new EventEmitter();
-myEmitter.on("response", ()=>{
-    console.log('data received');
-});  
-myEmitter.on("response", ()=>{
-    console.log('Some other logic here');
-}); 
-myEmitter.on("response", ()=>{
-    console.log('data received ${name} with id:${id}');
-}); 
-myEmitter.emit("response","harry",code);
+
+myEmitter.on("response", () => {
+    console.log("data received");
+});
+
+myEmitter.on("response", () => {
+    console.log("Some other logic here");
+});
+
+myEmitter.on("response", (name, id) => {
+    console.log(`data received ${name} with id: ${id}`);
+});
+
+myEmitter.emit("response", "harry", 101);
 
